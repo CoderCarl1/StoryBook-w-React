@@ -1,0 +1,186 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:react/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:jest/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "jest",
+        "react",
+        "import",
+        "jsx-a11y",
+        "react-hooks",
+        "@typescript-eslint"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "jest": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
+    },
+    "overrides": [
+        {
+            "files": [
+                "**/*.tsx",
+                "**/*.ts"
+            ],
+            "rules": {
+                "react/require-default-props": "off",
+                "react/prop-types": "off", // we should use types
+                "react/forbid-prop-types": "off", // we should use types
+                "no-dupe-class-members": "off", // this is called overloads in typescript
+            },
+        },
+        {
+            "files": [
+                "**/*.d.ts"
+            ],
+            "rules": {
+                "vars-on-top": "off",
+                "no-var": "off", // this is how typescript works
+                "spaced-comment": "off",
+            },
+        },
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "prettier/prettier": 1,
+        "no-unused-vars": [
+            1,
+            {
+                "argsIgnorePattern": "res|next|^err"
+            }
+        ],
+        "no-unused-expressions": [
+            2,
+            {
+                "allowTaggedTemplates": true,
+                "allowTernary": true
+            }
+        ],
+        "jsx-a11y/no-static-element-interactions": "error",
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": [
+                    "A",
+                    "LinkTo",
+                    "Link"
+                ],
+                "specialLink": [
+                    "overrideParams",
+                    "kind",
+                    "story",
+                    "to"
+                ],
+            }
+        ],
+        "jsx-a11y/label-has-associated-control": [
+            "warn",
+            {
+                "controlComponents": [
+                    "CustomInput"
+                ],
+                "depth": 3,
+                "labelAttributes": [
+                    "label"
+                ],
+                "labelComponents": [
+                    "CustomInputLabel"
+                ],
+            },
+        ],
+        "react/jsx-no-bind": [
+            "error",
+            {
+                "allowArrowFunctions": true,
+                "allowBind": true,
+                "allowFunctions": true,
+                "ignoreDOMComponents": true,
+                "ignoreRefs": true,
+            },
+        ],
+        "react/jsx-props-no-spreading": "off",
+        "func-names": 0,
+        "indent": [
+            2,
+            4
+        ],
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all"
+            }
+        ],
+        "react/prop-types": 0,
+        "no-console": 1,
+        "react-hooks/rules-of-hooks": 1,
+        "react-hooks/exhaustive-deps": 1,
+        "react/require-default-props": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    "tsx",
+                    "ts"
+                ]
+            }
+        ],
+        "class-methods-use-this": 0,
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "examples/**",
+                    "examples-native/**",
+                    "**/example/**",
+                    "*.js",
+                    "**/*.test.js",
+                    "**/*.stories.*",
+                    "**/scripts/*.js",
+                    "**/stories/**/*.js",
+                    "**/__tests__/**/*.js",
+                    "**/.storybook/**/*.*",
+                ],
+                "peerDependencies": true,
+            },
+        ],
+        "import/no-unresolved": [
+            "error",
+            {
+                "ignore": [
+                    "@storybook"
+                ],
+            }
+        ]
+    }
+}
