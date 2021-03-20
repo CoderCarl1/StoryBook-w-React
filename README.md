@@ -69,12 +69,12 @@ or
     <li>All logic should be done in a separate Business Logic file.</li>
   </ol>
 
-  If we follow this rule, <em>most, if not <strong>all</strong> of the components we create will be re-usable</em>
+If we follow this rule for the most part, <em>most, if not <strong>all</strong> of the components we create will be re-usable</em>
 
 <h3>Rule2. Do things in a React way</h3>
 This simply means:
 <ol>
-<li>Use State to hold variables</li>
+<li>Use State to hold variables that are referenced by more than one component</li>
 <li>Be aware of what your component needs when rendering
   <ul>
     <li>If you are using <em>styled components</em> and/or <em>defaultProps</em> include it in the file but not inside the component that will be rendered. </li>
@@ -84,29 +84,46 @@ This simply means:
 </ol>
 
 [Back to Contents](#Contents)
+
 </details>
+
 ---
+
 ---
 
 <details><summary><h2 id="component-1">Component 1 </h2></summary>
 
+We have a Form wich accepts 3 inputs
+
+-   height
+-   width
+-   radius
+
+The state of the inputs is kept in `App.js` so that we can pass it to other Components as needed.
+
+<em>(If you are unsure about how this works, read more on [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html))</em>
+
 [Back to Contents](#Contents)
+
 </details>
 
-
+---
 
 ---
----
+
 <details><summary><h2 id="component-2">Component 2 </h2></summary>
 
+A Div that accepts the state from App.js to decide its height, width, and border-radius.
+
 [Back to Contents](#Contents)
+
 </details>
 
 ---
+
 ---
 
 <details><summary><h2 id="use-Cases">Common Use-Cases </h2></summary>
-
 
 ---
 
@@ -116,6 +133,15 @@ This simply means:
 
 <a href="https://raw.githubusercontent.com/storybookjs/storybook/HEAD/addons/a11y/docs/screenshot.png" target="_blank"><img height=400 src="https://raw.githubusercontent.com/storybookjs/storybook/HEAD/addons/a11y/docs/screenshot.png"></img></a>
 
+`yarn add -D @storybook/addon-a11y`
+
+Add this line to your main.js file (create this file inside your storybook config directory if needed).
+
+```js module.exports = {
+  addons: ['@storybook/addon-a11y'],
+};
+```
+
 ---
 
 <h3>Create a private <strong>Readme for each component</strong>  </h3>
@@ -123,6 +149,12 @@ This simply means:
 -   <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/docs" target="_blank">StoryBook Docs documentation </a></em>
 
 <a href="https://raw.githubusercontent.com/storybookjs/storybook/master/addons/docs/docs/media/hero.png" target="_blank"><img height=400 src="https://raw.githubusercontent.com/storybookjs/storybook/master/addons/docs/docs/media/hero.png"></img></a>
+
+Each of your components' stories will get their own docsPage
+
+> StoryDocs are part of the essential addons and so is installed in all new Storybooks by default
+
+<em>Further information on customizing these pages can be found [here](https://github.com/storybookjs/storybook/tree/next/addons/docs#mdx)</em>
 
 ---
 
@@ -139,6 +171,16 @@ export default {
 
 export const first = () => <button onClick={linkTo('Button', 'second')}>Go to "Second"</button>;
 export const second = () => <button onClick={linkTo('Button', 'first')}>Go to "First"</button>;
+```
+
+`yarn add -D @storybook/addon-links`
+
+To use `linkTo` as shown above, make sure you add this to your `.storybook/main.js`
+
+```js
+module.exports = {
+    addons: ['@storybook/addon-links']
+};
 ```
 
 ---
@@ -158,6 +200,18 @@ export const second = () => <button onClick={linkTo('Button', 'first')}>Go to "F
 
 -   the <kbd>next</kbd> button will send a request in params to load the next 5 (0-5, 6-10, 11-15 and so on...)
 
+`yarn add -D @storybook/addon-queryparams`
+
+Add the below to your `storybook/main.js`
+
+<em>There are a couple of ways to mock these, refer [here for examples](https://github.com/storybookjs/storybook/tree/next/addons/queryparams)</em>
+
+```js
+module.exports = {
+    addons: ['@storybook/addon-queryparams']
+};
+```
+
 ---
 
 <h3>Render the component <strong>in Different @Media Queries</strong></h3>
@@ -165,6 +219,8 @@ export const second = () => <button onClick={linkTo('Button', 'first')}>Go to "F
 -   <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/viewport" target="_blank">StoryBook Viewports</a></em>
 
 <a href="https://github.com/storybookjs/storybook/raw/master/addons/viewport/docs/viewport.png" target="_blank"><img height=400 src="https://github.com/storybookjs/storybook/raw/master/addons/viewport/docs/viewport.png"></img></a>
+
+> The Viewport addon is part of the essential addons and so is installed in all new Storybooks by default
 
 ---
 

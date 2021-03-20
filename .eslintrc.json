@@ -55,8 +55,8 @@
                 "react/require-default-props": "off",
                 "react/prop-types": "off", // we should use types
                 "react/forbid-prop-types": "off", // we should use types
-                "no-dupe-class-members": "off", // this is called overloads in typescript
-            },
+                "no-dupe-class-members": "off" // this is called overloads in typescript
+            }
         },
         {
             "files": [
@@ -65,9 +65,9 @@
             "rules": {
                 "vars-on-top": "off",
                 "no-var": "off", // this is how typescript works
-                "spaced-comment": "off",
-            },
-        },
+                "spaced-comment": "off"
+            }
+        }
     ],
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off",
@@ -99,7 +99,7 @@
                     "kind",
                     "story",
                     "to"
-                ],
+                ]
             }
         ],
         "jsx-a11y/label-has-associated-control": [
@@ -114,8 +114,8 @@
                 ],
                 "labelComponents": [
                     "CustomInputLabel"
-                ],
-            },
+                ]
+            }
         ],
         "react/jsx-no-bind": [
             "error",
@@ -124,8 +124,8 @@
                 "allowBind": true,
                 "allowFunctions": true,
                 "ignoreDOMComponents": true,
-                "ignoreRefs": true,
-            },
+                "ignoreRefs": true
+            }
         ],
         "react/jsx-props-no-spreading": "off",
         "func-names": 0,
@@ -169,17 +169,17 @@
                     "**/scripts/*.js",
                     "**/stories/**/*.js",
                     "**/__tests__/**/*.js",
-                    "**/.storybook/**/*.*",
+                    "**/.storybook/**/*.*"
                 ],
-                "peerDependencies": true,
-            },
+                "peerDependencies": true
+            }
         ],
         "import/no-unresolved": [
             "error",
             {
                 "ignore": [
                     "@storybook"
-                ],
+                ]
             }
         ]
     }
