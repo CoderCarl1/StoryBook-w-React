@@ -1,71 +1,100 @@
-# Getting Started with Create React App
+# React-story-book-play
+This is a repo to learn and play with React Story Book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<em>Storybook is an open source tool for developing UI components in isolation</em>
 
-## Available Scripts
+[StoryBook Website](https://storybook.js.org/)  ||  [StoryBook Github](https://github.com/storybookjs/storybook)
 
-In the project directory, you can run:
+### Contents
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#use-Cases">Use Cases</a></li>
+</ul>
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<details><summary><h2 id="getting-started"> Getting-Started</h2>
 
-### `yarn test`
+Either:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<strong>1. Git clone this repo by running the below: </strong>
 
-### `yarn build`
+  <code>git clone git@github.com:CoderCarl1/react-story-book-play.git</code>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  > <em>This assumes you have added SSH to Github, otherwise use https://github.com/CoderCarl1/react-story-book-play.git</em>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  <code>yarn install</code>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  <code>npx sb init</code>
 
-### `yarn eject`
+or
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<code>npx create-react-app INSERTAPPNAMEHERE</code>
+<code>npx sb init </code>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<em>Alternatively to everything else, or as more practice: Refer to the <a href="https://storybook.js.org/tutorials/intro-to-storybook">tutorial on the StoryBook Website</a></em>
+</summary>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Back to Contents](#Contents)
+</details>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+<details><summary><h2 id="use-Cases">Use-Cases </h2></summary>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+<h3>Test the <strong>accessibility</strong> of your component  </h3>
 
-### Code Splitting
+- <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/a11y" target="_blank">A11y Addon documentation</a></em>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<a href="https://raw.githubusercontent.com/storybookjs/storybook/HEAD/addons/a11y/docs/screenshot.png"><img height=400 src="https://raw.githubusercontent.com/storybookjs/storybook/HEAD/addons/a11y/docs/screenshot.png"></img></a>
 
-### Analyzing the Bundle Size
+---
+<h3>Create a private <strong>Readme for each component</strong>  </h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/docs" target="_blank">StoryBook Docs documentation </a></h3>
 
-### Making a Progressive Web App
+<a href="https://raw.githubusercontent.com/storybookjs/storybook/master/addons/docs/docs/media/hero.png"><img height=400 src="https://raw.githubusercontent.com/storybookjs/storybook/master/addons/docs/docs/media/hero.png"></img></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
+<h3>Check the <strong>interactions between components</strong></h3>
 
-### Advanced Configuration
+- <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/links">Linking between StoryBook Components</a></em>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
+import { linkTo } from '@storybook/addon-links'
 
-### Deployment
+export default {
+  title: 'Button',
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+export const first = () => (
+  <button onClick={linkTo('Button', 'second')}>Go to "Second"</button>
+);
+export const second = () => (
+  <button onClick={linkTo('Button', 'first')}>Go to "First"</button>
+);
+```
+---
+<h3><strong>Send Query Parameters</strong> to the component</h3>
 
-### `yarn build` fails to minify
+<em>Our Component can render data to the screen depending on the Props we pass to it. These can come from the Params sent in the URL. </em>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# StoryBook-w-React
+### Examples
+
+<em>A weather APP</em>
+  - Render the weather for the city whose name is sent with a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">FETCH request</a> to the API
+
+<em>A Job Search App wich displays 5 jobs at a time</em>
+  - the <kbd>next</kbd> button will send a request in params to load the next 5  (0-5, 6-10, 11-15 and so on...)
+  
+---
+<h3>Render the component <strong>in Different @Media Queries</strong></h3>
+
+- <em><a href="https://github.com/storybookjs/storybook/tree/next/addons/viewport">StoryBook Viewports</a></em>
+
+<a href="https://github.com/storybookjs/storybook/raw/master/addons/viewport/docs/viewport.png"><img height=400 src="https://github.com/storybookjs/storybook/raw/master/addons/viewport/docs/viewport.png"></img></a>
+
+---
+[Back to Contents](#Contents)
+</details>
